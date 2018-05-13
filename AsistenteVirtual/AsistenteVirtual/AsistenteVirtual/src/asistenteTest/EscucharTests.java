@@ -55,16 +55,52 @@ class EscucharTests {
 		}
 	}
 
-	@Test // CON FECHA
-
-	public void escucharTest2() {
-		Assert.assertEquals("@delucas entre el 1 de abril de 2017 y el 1 de abril de 2018 pasaron 365 días",
-				jenkins.escuchar("@jenkins cuántos dias pasaron desde el 1 de abril de 2017?"));
-
-		Assert.assertEquals("@delucas entre el 1 de marzo de 2018 y el 1 de abril de 2018 pasaron 31 días",
-				jenkins.escuchar("@jenkins cuántos dias pasaron desde el 1 de marzo de 2018?"));
+	
+	// CON FECHA
+	
+	@Test
+	public void hora() {
+		String[] mensajes = {
+				"¿qué hora es, @jenkins?",
+				"@jenkins, la hora por favor",
+				"me decís la hora @jenkins?"
+		};
+		for (String mensaje : mensajes) {
+			Assert.assertEquals(
+					"@delucas son las 3:15 PM",
+					jenkins.escuchar(mensaje)
+			);
+		}
 	}
-
+	
+	@Test
+	public void fecha() {
+		String[] mensajes = {
+				"¿qué día es, @jenkins?",
+				"@jenkins, la fecha por favor",
+				"me decís la fecha @jenkins?"
+		};
+		for (String mensaje : mensajes) {
+			Assert.assertEquals(
+					"@delucas hoy es 1 de abril de 2018",
+					jenkins.escuchar(mensaje)
+			);
+		}
+	}
+	
+	@Test
+	public void diaDeLaSemana() {
+		String[] mensajes = {
+				"¿qué día de la semana es hoy, @jenkins?"
+		};
+		for (String mensaje : mensajes) {
+			Assert.assertEquals(
+					"@delucas hoy es domingo",
+					jenkins.escuchar(mensaje)
+			);
+		}
+	}
+	
 	@Test
 	public void diaDentroDe() {
 
@@ -124,7 +160,6 @@ class EscucharTests {
 		assertEquals("@delucas 10", jenkins.escuchar("@jenkins cuánto es el 10% de 100"));		
 
 		assertEquals("@delucas 42", jenkins.escuchar("@jenkins cuánto es el 17 + 5 ^ 2"));
-
 	
 	}
 

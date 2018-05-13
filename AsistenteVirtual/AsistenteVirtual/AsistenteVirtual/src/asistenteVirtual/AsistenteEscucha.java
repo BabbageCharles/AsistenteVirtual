@@ -104,7 +104,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 				"lunes", "martes", "miércoles", "jueves", "viernes", "cuántos dias", "qué día será dentro de",
 				"qué dia", "cuánto falta", "qué dia", "cuántas semanas", "cuántos meses", "cuantas semanas",
 				"cuantos meses", "hace cuánto", "pasaron desde", "faltan hasta", "días para", "semanas para",
-				"meses para");
+				"meses para","hora","la fecha por favor","¿qué día es","hoy","me decís la fecha");
 		List<String> calculos = Arrays.asList("Cuánto es", "%", "+", "-", "elevado a", "raiz de", "menos", "*", "5/5",
 				":", "^", "dividido", "sqrt", "porciento", "resultado de", "al cuadrado", "al cubo", "a la cuarta",
 				"raiz cuadrada", "raíz cúbica");

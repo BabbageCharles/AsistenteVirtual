@@ -12,7 +12,12 @@ public class Fecha {
 	
 	public static String darFecha(String s) {
 
-		Calendar c1;
+		Calendar c1 = GregorianCalendar.getInstance();
+		if(FECHA_HORA != null)
+			c1.setTime(FECHA_HORA);
+		Calendar d2 = GregorianCalendar.getInstance();
+		if(FECHA_HORA != null)
+			d2.setTime(FECHA_HORA);
 		Locale locale = Locale.getDefault();
 		
 
@@ -56,11 +61,7 @@ public class Fecha {
 		}
 
 		if (s.contains("pasaron")) {
-			Calendar d1 = Fecha.convertToCalendar(s);
-			Calendar d2 = GregorianCalendar.getInstance();
-			if(FECHA_HORA != null)
-				d2.setTime(FECHA_HORA);
-			
+			Calendar d1 = Fecha.convertToCalendar(s);			
 			String f ="entre el " + Fecha.convertCalendarToString(d1) + " y el "
 					+ Fecha.convertCalendarToString(d2) + " pasaron " + Fecha.diasDesde(s) + " días";
 			return f;
@@ -70,6 +71,22 @@ public class Fecha {
 			String f = "faltan " + Fecha.tiempoHasta(s) + " dias";
 			return f;
 		}
+		
+		if(s.contains("hora")) {
+			String f = "son las "+ Fecha.getHora(c1);
+			return f;
+		}
+		
+		if(s.contains("qué día es") || s.contains("la fecha")) {
+			String f = "hoy es " +Fecha.convertCalendarToString(c1);
+			return f;
+		}
+		
+		if(s.contains("hoy")) {
+			String f = "hoy es "+ c1.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, locale);
+			return f;
+		}
+			
 
 		return " ";
 
@@ -97,6 +114,23 @@ public class Fecha {
 
 		return c1;
 	}
+	
+	public static String getHora(Calendar c1) {
+		int h = c1.get(Calendar.HOUR_OF_DAY);
+		int hora= c1.get(Calendar.HOUR);
+		int minutos= c1.get(Calendar.MINUTE);
+		String res;
+		
+		if(h== 12 && minutos==0)
+			res = hora+":"+minutos+" AM";
+		if(h<12)
+			res = hora+":"+minutos+" AM";
+		
+		res= hora+":"+minutos+" PM";
+		
+		return res;
+	}
+
 
 	
 
@@ -149,5 +183,6 @@ public class Fecha {
 		long days = milisec / (1000 * 60 * 60 * 24);
 		return days;
 	}
-
+	
+	
 }
