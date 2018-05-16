@@ -51,34 +51,32 @@ public class AsistenteEscucha extends AsistenteVirtual {
 			}			
 		}
 		
-		if(msjIn.contains("leyes") || msjIn.contains("robótica")) {
-			String leyes= ("1-Un robot no hará daño a un ser humano, ni permitirá con su inacción que sufra daño.\n"
-									+"2-Un robot debe cumplir las órdenes dadas por los seres humanos, a excepción de aquellas que entrasen en conflicto con la primera ley.\n"
-									+"3-Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la primera o con la segunda ley.");
-			//System.out.println(leyes);
-			return leyes;
-		}
+		if(msjIn.contains("leyes") || msjIn.contains("robótica")) 						
+			return AsistenteVirtual.leyesRobotica(msjIn);
+		
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMasa"))
+			return AsistenteVirtual.masa(msjIn);
 			
 
-		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer")) {// DOS PEDIDOS
+/*		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer")) {// DOS PEDIDOS
 			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.agradecer(msjIn);
 		}
 
-//		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-DarFecha")) {
-//			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.darFecha(msjIn);
-//		}
-//		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Agradecer-DarFecha")) {
-//			return AsistenteVirtual.agradecer(msjIn) + "," + AsistenteVirtual.darFecha(msjIn);
-//		}
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-DarFecha")) {
+			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.darFecha(msjIn);
+		}
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Agradecer-DarFecha")) {
+			return AsistenteVirtual.agradecer(msjIn) + "," + AsistenteVirtual.darFecha(msjIn);
+		}
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Calcular")) {
 			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.calculo(msjIn);
 		}
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Agradecer-Calcular")) {
 			return AsistenteVirtual.agradecer(msjIn) + "," + AsistenteVirtual.calculo(msjIn);
 		}
-//		if (nuevoEscucha.reconocerPedidos(msjIn).equals("DarFecha-Calcular")) {
-//			return AsistenteVirtual.darFecha(msjIn) + "," + AsistenteVirtual.calculo(msjIn);
-//		}
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("DarFecha-Calcular")) {
+		return AsistenteVirtual.darFecha(msjIn) + "," + AsistenteVirtual.calculo(msjIn);
+		}
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer-DarFecha")) {// TRES PEDIDOS
 			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.agradecer(msjIn);
 
@@ -88,15 +86,15 @@ public class AsistenteEscucha extends AsistenteVirtual {
 					+ AsistenteVirtual.calculo(msjIn);
 
 		}
-//		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-DarFecha-Calcular")) {
-//			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.calculo(msjIn) + ","
-//					+ AsistenteVirtual.darFecha(msjIn);
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-DarFecha-Calcular")) {
+			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.calculo(msjIn) + ","
+					+ AsistenteVirtual.darFecha(msjIn);
 
-//		}
-//		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer-DarFecha-Calcular")) {// 4 PEDIDOS
-//			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.calculo(msjIn) + ","
-//					+ AsistenteVirtual.darFecha(msjIn) + "," + AsistenteVirtual.agradecer(msjIn);
-//		}
+		}
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer-DarFecha-Calcular")) {// 4 PEDIDOS
+			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.calculo(msjIn) + ","
+					+ AsistenteVirtual.darFecha(msjIn) + "," + AsistenteVirtual.agradecer(msjIn);
+		}*/
 
 		return "Disculpa... no entiendo el pedido, @" + USUARIO + " ¿podrías repetirlo?";// NO ENTENDIMIENTO DEL MENSAJE
 	}
@@ -116,27 +114,34 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		List<String> calculos = Arrays.asList("Cuánto es", "%", "+", "-", "elevado a", "raiz de", "menos", "*", "5/5",
 				":", "^", "dividido", "sqrt", "porciento", "resultado de", "al cuadrado", "al cubo", "a la cuarta",
 				"raiz cuadrada", "raíz cúbica");
+		
+		List<String> unidadDeMasa = Arrays.asList("miligramo","miligramos","gramo","gramos",
+				 "kilo","kilos","dracma","dracmas","onza","onzas","libra","libras");
 
 		String a = saludos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String b = agradecimientos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String c = fechas.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String d = calculos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst()
 				.orElse("No entiendo el mensaje");
+		String e= unidadDeMasa.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 
 		// un solo pedido
-		if (!a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error))
+		if (!a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error))
 			return "Saludar";
 
-		if (a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error))
+		if (a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error))
 			return "Agradecer";
 
-		if (a.equals(error) && b.equals(error) && !c.equals(error) && d.equals(error))
+		if (a.equals(error) && b.equals(error) && !c.equals(error) && d.equals(error) && e.equals(error))
 			return "DarFecha";
 
-		if (a.equals(error) && b.equals(error) && c.equals(error) && !d.equals(error))
+		if (a.equals(error) && b.equals(error) && c.equals(error) && !d.equals(error) && e.equals(error))
 			return "Calcular";
+		
+		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error))
+			return "UnidadMasa";
 
-		// dos pedidos
+/*		// dos pedidos
 		if (!a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error))
 			return "Saludar-Agradecer";
 
@@ -162,7 +167,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 			return "Saludar-Agradecer-Calcular";
 
 		if (!a.equals(error) && b.equals(error) && !c.equals(error) && !d.equals(error))
-			return "Saludar-DarFecha-Calcular";
+			return "Saludar-DarFecha-Calcular";*/
 
 		// cuatro pedidos o no entendimiento
 		if (!a.equals(error) && !b.equals(error) && !c.equals(error) && !d.equals(error))

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.junit.Assert"/>
-<fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="asistenteVirtual.Fecha"/>
+<fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
+<fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
+<fullyQualifiedTypeName name="asistenteVirtual.UnidadDeMasa"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 </qualifiedTypeNameHistroy>
