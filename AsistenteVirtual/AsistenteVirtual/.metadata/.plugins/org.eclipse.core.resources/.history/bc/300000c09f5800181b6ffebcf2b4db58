@@ -119,18 +119,16 @@ public class Fecha {
 		int h = c1.get(Calendar.HOUR_OF_DAY);
 		int hora= c1.get(Calendar.HOUR);
 		int minutos= c1.get(Calendar.MINUTE);
-		String res="";
-		String min=String.format("%02d",minutos);
+		String res;
 		
-		if(h== 12 || (h==0 && minutos ==0)) 
-			hora=12;				
-			
+		if(h== 12 && minutos==0)
+			res = hora+":"+minutos+" AM";
 		if(h<12)
-			res = hora+":"+min+" AM";
-		if(h>=12)
-			res= hora+":"+min+" PM";
+			res = hora+":"+minutos+" AM";
 		
-		return res;		
+		res= hora+":"+minutos+" PM";
+		
+		return res;
 	}
 
 

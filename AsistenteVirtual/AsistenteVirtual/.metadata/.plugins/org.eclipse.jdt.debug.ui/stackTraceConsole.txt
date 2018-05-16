@@ -1,7 +1,7 @@
-org.junit.ComparisonFailure: expected:<@delucas [10]> but was:<@delucas [null]>
+org.junit.ComparisonFailure: expected:<@delucas son las [3:15] PM> but was:<@delucas son las [6:00] PM>
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at asistenteTest.EscucharTests.calculos(EscucharTests.java:124)
+	at asistenteTest.EscucharTests.hora(EscucharTests.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
