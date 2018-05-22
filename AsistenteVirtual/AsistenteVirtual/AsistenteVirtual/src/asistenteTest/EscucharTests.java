@@ -55,16 +55,52 @@ class EscucharTests {
 		}
 	}
 
-	@Test // CON FECHA
-
-	public void escucharTest2() {
-		Assert.assertEquals("@delucas entre el 1 de abril de 2017 y el 1 de abril de 2018 pasaron 365 días",
-				jenkins.escuchar("@jenkins cuántos dias pasaron desde el 1 de abril de 2017?"));
-
-		Assert.assertEquals("@delucas entre el 1 de marzo de 2018 y el 1 de abril de 2018 pasaron 31 días",
-				jenkins.escuchar("@jenkins cuántos dias pasaron desde el 1 de marzo de 2018?"));
+	
+	// CON FECHA
+	
+	@Test
+	public void hora() {
+		String[] mensajes = {
+				"¿qué hora es, @jenkins?",
+				"@jenkins, la hora por favor",
+				"me decís la hora @jenkins?"
+		};
+		for (String mensaje : mensajes) {
+			Assert.assertEquals(
+					"@delucas son las 3:15 PM",
+					jenkins.escuchar(mensaje)
+			);
+		}
 	}
-
+	
+	@Test
+	public void fecha() {
+		String[] mensajes = {
+				"¿qué día es, @jenkins?",
+				"@jenkins, la fecha por favor",
+				"me decís la fecha @jenkins?"
+		};
+		for (String mensaje : mensajes) {
+			Assert.assertEquals(
+					"@delucas hoy es 1 de abril de 2018",
+					jenkins.escuchar(mensaje)
+			);
+		}
+	}
+	
+	@Test
+	public void diaDeLaSemana() {
+		String[] mensajes = {
+				"¿qué día de la semana es hoy, @jenkins?"
+		};
+		for (String mensaje : mensajes) {
+			Assert.assertEquals(
+					"@delucas hoy es domingo",
+					jenkins.escuchar(mensaje)
+			);
+		}
+	}
+	
 	@Test
 	public void diaDentroDe() {
 
@@ -124,7 +160,6 @@ class EscucharTests {
 		assertEquals("@delucas 10", jenkins.escuchar("@jenkins cuánto es el 10% de 100"));		
 
 		assertEquals("@delucas 42", jenkins.escuchar("@jenkins cuánto es el 17 + 5 ^ 2"));
-
 	
 	}
 
@@ -133,6 +168,99 @@ class EscucharTests {
 		assertEquals("@delucas -6", jenkins.escuchar("@jenkins cuánto es (4-8)*2 + 4 / ( 1 + 1)"));
 		
 	}
+	
+	// Leyes de la robotica
+	@Test
+	public void leyesRobotica() {
+		
+		String[] mensajes = {
+				"¿@jenkins cuales son las leyes de la robótica?",
+				"me decias las leyes de la robótica @jenkins?",
+				"@jenkins,las leyes de la robotica por favor"
+		};
+		
+		for (String mensaje : mensajes) {
+			Assert.assertEquals("1-Un robot no hará daño a un ser humano, ni permitirá con su inacción que sufra daño.\n" + 
+					"2-Un robot debe cumplir las órdenes dadas por los seres humanos, a excepción de aquellas que entrasen en conflicto con la primera ley.\n" + 
+					"3-Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la primera o con la segunda ley.", 
+					jenkins.escuchar(mensaje));
+			
+		}
+		
+	}
+	
+	/*
+	// Unidad de masa
+	@Test
+	public void unidadesDeMasa() {
+		Assert.assertEquals(
+				"@delucas 1000 miligramos equivalen a 1 gramos",
+				jenkins.escuchar("@jenkins cuántos gramos son 1000 miligramos")
+			);
+	
+		Assert.assertEquals(
+				"@delucas 1000 miligramos equivalen a 0.001 kilos",
+				jenkins.escuchar("@jenkins cuántos kilos son 1000 miligramos")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1000 gramos equivalen a 1000000 miligramos",
+				jenkins.escuchar("@jenkins cuántos miligramos son 1000 gramos")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1000 gramos equivalen a 1 kilos",
+				jenkins.escuchar("@jenkins cuántos kilos son 1000 gramos")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1 kilos equivalen a 1000000 miligramos",
+				jenkins.escuchar("@jenkins cuántos miligramos son 1 kilos")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1 kilos equivalen a 1000 gramos",
+				jenkins.escuchar("@jenkins cuántos gramos son 1 kilos")
+			);
+		
+		
+		Assert.assertEquals(
+				"@delucas 1000 dracmas equivalen a 62.5 onzas",
+				jenkins.escuchar("@jenkins cuántas onzas son 1000 dracmas")
+			);
+	
+		Assert.assertEquals(
+				"@delucas 1000 dracmas equivalen a 3.906 libras",
+				jenkins.escuchar("@jenkins cuántas libras son 1000 dracmas")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1000 onzas equivalen a 16000 dracmas",
+				jenkins.escuchar("@jenkins cuántas dracmas son 1000 onzas")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1000 onzas equivalen a 62.5 libras",
+				jenkins.escuchar("@jenkins cuántas libras son 1000 onzas")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1 libras equivalen a 256 dracmas",
+				jenkins.escuchar("@jenkins cuántas dracmas son 1 libras")
+			);
+		
+		Assert.assertEquals(
+				"@delucas 1 libras equivalen a 16 onzas",
+				jenkins.escuchar("@jenkins cuántas onzas son 1 libras")
+			);
+		
+		
+	
+		Assert.assertEquals(
+				"@delucas 1000 gramos equivalen a 35.27 onzas",
+				jenkins.escuchar("@jenkins cuántas onzas son 1000 gramos")
+			);		
+	}*/
 
 
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import asistenteVirtual.unidadesMedicion.ConvertorDeUnidades;
+
 public class AsistenteVirtual {
 
 	public final static String USUARIO = "delucas"; //Generar nombre random en el constructor
@@ -54,6 +56,17 @@ public class AsistenteVirtual {
 		return "@"+USUARIO+" "+res;
 	}
 
+	// Leyes de la robotica/******************************************************************/
+	public static String leyesRobotica(String cadena) {
+		String leyes= ("1-Un robot no hará daño a un ser humano, ni permitirá con su inacción que sufra daño.\n"
+				+"2-Un robot debe cumplir las órdenes dadas por los seres humanos, a excepción de aquellas que entrasen en conflicto con la primera ley.\n"
+				+"3-Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la primera o con la segunda ley.");
+		return leyes;
+	}
 	
-	
+	// Unidad Masa/******************************************************************/
+	public static String masa(String cadena) {
+		String res=ConvertorDeUnidades.darConversion(cadena);
+		return "@"+USUARIO+" "+res;
+	}
 }
