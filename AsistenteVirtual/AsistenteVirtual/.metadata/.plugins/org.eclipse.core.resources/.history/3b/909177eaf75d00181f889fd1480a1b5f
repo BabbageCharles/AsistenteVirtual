@@ -1,0 +1,15 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class Kilo {
+
+	private double cantidad;
+	
+	public Kilo(double cant) {
+		this.cantidad= cant;
+	}
+	
+	public void convertirA(Miligramo ml) {
+		double cant= this.cantidad*1000;
+		ml = new Miligramo(cant*1000);
+	}
+}

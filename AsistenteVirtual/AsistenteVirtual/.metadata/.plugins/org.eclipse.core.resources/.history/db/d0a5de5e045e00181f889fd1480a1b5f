@@ -1,0 +1,69 @@
+package asistenteVirtual.unidadesMedicion;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.text.DecimalFormat;
+
+import asistenteVirtual.Utilitarias;
+
+public class ConvertorDeUnidades {
+	
+	public static String darConversion(String cadena)  {
+		int resultado=0;
+		DecimalFormat df = new DecimalFormat("#.###");
+		Integer cantidad= Utilitarias.buscarEntero(cadena);
+		//me quedo con la parte final de la cadena despues del numero para obtener la unidad original
+		String auxOri= cadena.substring(cadena.indexOf(cantidad.toString())); 
+		String unidadOriginal= ConvertorDeUnidades.buscarUnidad(auxOri);
+		String uniOriginal= unidadOriginal;
+		//descarto el final de la cadena para quedarme unicamente con la nueva unidad
+		String auxNue= cadena.substring(0,cadena.indexOf(cantidad.toString()));
+		String unidadNueva = ConvertorDeUnidades.buscarUnidad(auxNue);
+		String uniNueva= unidadNueva;		
+		
+		// si las unidades estan en plural tengo que quitarle la "s" xq sino no puedo llamar a las otras clases usando reflection
+		if(unidadNueva.endsWith("s"))
+			unidadNueva = unidadNueva.substring(0, unidadNueva.indexOf("s"));
+		if(unidadOriginal.endsWith("s"))
+			unidadOriginal = unidadOriginal.substring(0, unidadOriginal.indexOf("s"));
+		try {
+		Class<?> UOriClass = Class.forName(unidadOriginal);
+		Class<?> UNueClass = Class.forName(unidadNueva);
+		
+		Constructor<?> constructor = UOriClass.getConstructor(double.class);
+		Object uOri = constructor.newInstance(cantidad);
+		
+		Constructor<?> constructor2 = UNueClass.getConstructor(double.class);
+		Object uNue = constructor2.newInstance(0);
+		
+		Method methodConvert = uOri.getClass().getDeclaredMethod("convertirA",UNueClass);
+		uNue = methodConvert.invoke(uOri,uNue);
+		
+		Method methodGetCant = uOri.getClass().getDeclaredMethod("getCantidad");
+		
+		
+		resultado = (int) methodGetCant.invoke(uNue);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		System.out.println(resultado);
+		
+		return "";
+	}	
+	
+	public static String buscarUnidad(String cadena) {
+		String uni[]= {"Miligramos","Miligramo","Gramos","Gramo","Kilos","Kilo"};
+		String unidad;
+		int i=0;
+		
+		while(!cadena.contains(uni[i].toLowerCase()))
+			i++;
+		
+		unidad= uni[i];		
+		return unidad;
+		
+	}
+	
+}

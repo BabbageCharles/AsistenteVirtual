@@ -4,9 +4,12 @@
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="asistenteVirtual.Fecha"/>
 <fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
-<fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="asistenteVirtual.UnidadDeMasa"/>
-<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="asistenteVirtual.ConvertorDeUnidades"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.Miligramo"/>
+<fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
 </qualifiedTypeNameHistroy>

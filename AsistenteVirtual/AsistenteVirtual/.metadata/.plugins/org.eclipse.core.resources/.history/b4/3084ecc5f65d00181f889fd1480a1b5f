@@ -1,0 +1,20 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class Miligramos {
+
+	public final static double mgGramo = 0.001;
+	private double cantidad;
+	
+	public Miligramos(double cant) {
+		this.cantidad= cant;
+	}
+	
+	public void convertirA(Gramo g) {
+		g= new Gramo(this.cantidad/1000);
+	}
+	
+	public void convertirA(Kilo k) {
+		double cant=this.cantidad/1000;
+		k= new Kilo(cant/1000);
+	}
+}
