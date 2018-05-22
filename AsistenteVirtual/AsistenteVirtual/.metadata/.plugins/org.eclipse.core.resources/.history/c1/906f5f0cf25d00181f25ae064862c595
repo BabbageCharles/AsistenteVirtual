@@ -169,7 +169,6 @@ class EscucharTests {
 		
 	}
 	
-	// Leyes de la robotica
 	@Test
 	public void leyesRobotica() {
 		
@@ -189,7 +188,6 @@ class EscucharTests {
 		
 	}
 	
-	/*
 	// Unidad de masa
 	@Test
 	public void unidadesDeMasa() {
@@ -255,12 +253,12 @@ class EscucharTests {
 			);
 		
 		
-	
+	/*
 		Assert.assertEquals(
 				"@delucas 1000 gramos equivalen a 35.27 onzas",
 				jenkins.escuchar("@jenkins cuántas onzas son 1000 gramos")
-			);		
-	}*/
+			);		*/
+	}
 
 
 }

@@ -7,4 +7,6 @@
 <fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="asistenteVirtual.UnidadDeMasa"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="asistenteVirtual.ConvertorDeUnidades"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
 </qualifiedTypeNameHistroy>

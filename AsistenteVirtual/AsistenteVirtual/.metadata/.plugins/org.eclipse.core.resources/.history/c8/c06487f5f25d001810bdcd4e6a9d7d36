@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import asistenteVirtual.unidadesMedicion.ConvertorDeUnidades;
-
 public class AsistenteVirtual {
 
 	public final static String USUARIO = "delucas"; //Generar nombre random en el constructor
