@@ -65,7 +65,7 @@ public class AsistenteVirtual {
 	}
 	
 	// Unidad Masa/******************************************************************/
-	public static String conversor(String cadena) {
+	public static String convert(String cadena) {
 		String res=ConvertorDeUnidades.darConversion(cadena);
 		return "@"+USUARIO+" "+res;
 	}

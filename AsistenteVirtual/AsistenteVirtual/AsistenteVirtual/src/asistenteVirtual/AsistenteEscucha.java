@@ -18,6 +18,8 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuánto es 1 + 2"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos metros son 100 centimetros?"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos centimetros son 1 metro?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos centimetros son 1 kilometro?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 100000 centimetros?"));
 
 	}
 
@@ -57,10 +59,10 @@ public class AsistenteEscucha extends AsistenteVirtual {
 			return AsistenteVirtual.leyesRobotica(msjIn);
 		
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMasa"))
-			return AsistenteVirtual.conversor(msjIn);
+			return AsistenteVirtual.convert(msjIn);
 		
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadLongitud"))
-			return AsistenteVirtual.conversor(msjIn);
+			return AsistenteVirtual.convert(msjIn);
 
 /*		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer")) {// DOS PEDIDOS
 			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.agradecer(msjIn);
@@ -122,7 +124,9 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		List<String> unidadDeMasa = Arrays.asList("miligramo","miligramos","gramo","gramos",
 				 "kilo","kilos","dracma","dracmas","onza","onzas","libra","libras");
 		
-		List<String> unidadDeLongitud = Arrays.asList("centimetros","centimetro","metros","metro");
+		List<String> unidadDeLongitud = Arrays.asList("centimetros","centimetro","milimetro",
+				"milimetros","Kilometros","Kilometro","metros","metro","yardas","yarda","pulgadas",
+				"pulgada","pies","pie");
 		
 		
 
@@ -131,7 +135,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		String c = fechas.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String d = calculos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst()
 				.orElse("No entiendo el mensaje");
-		String e= unidadDeMasa.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
+		String e= unidadDeMasa.stream().filter(x -> msj.toLowerCase().matches(x)).findFirst().orElse(error);
 		String f= unidadDeLongitud.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		
 

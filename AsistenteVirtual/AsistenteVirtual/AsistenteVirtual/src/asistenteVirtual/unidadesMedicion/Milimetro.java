@@ -1,29 +1,27 @@
 package asistenteVirtual.unidadesMedicion;
 
-public class Centimetro {
+public class Milimetro {
 
 	private double cantidad;
 
-	public Centimetro(double cant) {
+	public Milimetro(double cant) {
 		this.cantidad = cant;
 	}
 	
 	public Metro convertirA(Metro mt){
-		return new Metro(this.cantidad/100);
-	}
-
-	public Milimetro convertirA(Milimetro mm){
-		return new Milimetro(this.cantidad*10);
-	}
-
-	public Kilometro convertirA(Kilometro km){
-		return new Kilometro(this.cantidad/100000);
+		return new Metro(this.cantidad/1000);
 	}
 	
+	public Centimetro convertirA(Centimetro cm){
+		return new Centimetro(this.cantidad/10);
+	}
+	
+	public Kilometro convertirA(Kilometro km){
+		return new Kilometro(this.cantidad/1000000);
+	}
+
 	public double getCantidad() {
 		return cantidad;
 	}
 
-
-	
 }
