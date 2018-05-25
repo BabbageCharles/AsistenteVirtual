@@ -13,18 +13,9 @@ public class ConvertorDeUnidades {
 		DecimalFormat df = new DecimalFormat("#.#######");
 		double resultado=0;		
 		Integer cantidad= Utilitarias.buscarEntero(cadena);
-		String paquete ="asistenteVirtual.unidadesMedicion.";
-		
-		String unidadOriginal= ConvertorDeUnidades.buscarUnidad(cadena.substring(cadena.indexOf(cantidad.toString())));
-		String uniOriginal= unidadOriginal;	
-		
-		String unidadNueva = ConvertorDeUnidades.buscarUnidad(cadena.substring(0,cadena.indexOf(cantidad.toString())));
-		String uniNueva= unidadNueva;		
-		
-		if(unidadNueva.endsWith("s"))
-			unidadNueva = unidadNueva.substring(0, unidadNueva.indexOf("s"));
-		if(unidadOriginal.endsWith("s"))
-			unidadOriginal = unidadOriginal.substring(0, unidadOriginal.indexOf("s"));	
+		String paquete = ConvertorDeUnidades.class.getPackage().getName()+".";		
+		String unidadOriginal= ConvertorDeUnidades.buscarUnidad(cadena.substring(cadena.indexOf(cantidad.toString())));		
+		String unidadNueva = ConvertorDeUnidades.buscarUnidad(cadena.substring(0,cadena.indexOf(cantidad.toString())));	
 		
 		try {
 		Class<?> UnidadaOriginalClass = Class.forName(paquete+unidadOriginal);
@@ -43,21 +34,25 @@ public class ConvertorDeUnidades {
 		resultado =  (double) methodGetCant.invoke(uNue);	
 		
 		}catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("No se puedo realizar la conversion");
 		}
 		
-		if(resultado == 1)
-			uniNueva = unidadNueva.toLowerCase();
+		if(resultado != 1)
+			unidadNueva = unidadNueva.toLowerCase()+"s";
 		
-		String res = cantidad+" "+uniOriginal.toLowerCase()+" equivalen a "+df.format(resultado).replace(",", ".")+" "+uniNueva.toLowerCase();
+		if(cantidad != 1)
+			unidadOriginal = unidadOriginal.toLowerCase()+"s";
+		
+		String res = cantidad+" "+unidadOriginal.toLowerCase()+" equivalen a "+df.format(resultado).replace(",", ".")+" "+unidadNueva.toLowerCase();
 			
 		return res;
 	}	
 	
 	public static String buscarUnidad(String cadena) {
-		String uni[]= {"Miligramos","Miligramo","Gramos","Gramo",
-				"Centimetros","Centimetro","Milimetros","Milimetro","Kilometros","Kilometro","Metros",
-				"Metro","Yardas","Yarda","Pulgadas","Pulgada","Pies","Pie","Kilos","Kilo"};
+		String uni[]= {"Miligramo","Gramo","Kilo","Dracma","Onza","Libra",
+				"Milimetro","Centimetro","Metro","Kilometro",
+				"Pie","Pulgada","Yarda"};
+		
 		String unidad;
 		int i=0;
 		

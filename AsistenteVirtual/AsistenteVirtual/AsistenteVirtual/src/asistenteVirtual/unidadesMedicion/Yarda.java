@@ -9,9 +9,9 @@ public class Yarda {
 	}
 	
 	
-	public Kilometro convertirA(Kilometro km){
+	/*public Kilometro convertirA(Kilometro km){
 		return new Kilometro(this.cantidad* 0.0009144);
-	}
+	}*/
 	
 	public Metro convertirA(Metro mt){
 		return new Metro(this.cantidad*0.914401829);

@@ -9,7 +9,8 @@
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.Miligramo"/>
 <fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
-<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
 </qualifiedTypeNameHistroy>

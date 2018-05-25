@@ -16,9 +16,9 @@ public class Centimetro {
 		return new Milimetro(this.cantidad*10);
 	}
 
-	public Kilometro convertirA(Kilometro km){
+	/*public Kilometro convertirA(Kilometro km){
 		return new Kilometro(this.cantidad/100000);
-	}
+	}*/
 	
 	public Yarda convertirA(Yarda yr){
 		return new Yarda(this.cantidad* 0.010936);

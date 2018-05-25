@@ -1,7 +1,7 @@
-org.junit.ComparisonFailure: expected:<@delucas 1[ kilo equivalen a 1]000 gramos> but was:<@delucas 1[7 kilo equivalen a 17]000 gramos>
+org.junit.ComparisonFailure: expected:<@delucas faltan [9] dias> but was:<@delucas faltan [8] dias>
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at asistenteTest.EscucharTests.unidadesDeMasa(EscucharTests.java:222)
+	at asistenteTest.EscucharTests.tiempoHasta(EscucharTests.java:146)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
