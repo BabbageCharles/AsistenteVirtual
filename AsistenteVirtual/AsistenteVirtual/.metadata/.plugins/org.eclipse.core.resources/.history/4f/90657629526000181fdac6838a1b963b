@@ -1,0 +1,18 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class YardaCubico {
+
+	private double cantida;
+	
+	public YardaCubico(double cantida) {
+		this.cantida = cantida;
+	}
+	
+	public double getCantida() {
+		return cantida;
+	}
+
+	
+	
+	
+}

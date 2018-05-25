@@ -38,15 +38,31 @@ public class ConvertorDeUnidades {
 			System.out.println("No se puedo realizar la conversion");
 		}
 		
-		if(resultado != 1) 
-			unidadNueva = unidadNueva.toLowerCase()+"s";			
+		// todos estos if son para mostras bien la salida, ej si llega a ser cubico, si es unidad en plural o singular, etc
+		if(resultado != 1) {
+			if(cadena.contains("cúbico"))
+				unidadNueva = unidadNueva.substring(0,unidadNueva.indexOf("Cubico")).toLowerCase()+"s"+" cúbicos";
+			else
+				unidadNueva = unidadNueva.toLowerCase()+"s";
+		}
+		else {
+			if(cadena.contains("cúbico"))
+				unidadNueva = unidadNueva.substring(0,unidadNueva.indexOf("Cubico")).toLowerCase()+" cúbicos";
+		}
 		
 		if(cantidad != 1) {
-			unidadOriginal = unidadOriginal.toLowerCase()+"s";
+			if(cadena.contains("cúbico"))
+				unidadOriginal = unidadOriginal.substring(0,unidadOriginal.indexOf("Cubico")).toLowerCase()+"s"+" cúbicos";
+			else
+				unidadOriginal = unidadOriginal.toLowerCase()+"s";
 			aux= " equivalen a ";
 		}
-			
+		else {
+			if(cadena.contains("cúbico"))
+				unidadOriginal = unidadOriginal.substring(0,unidadOriginal.indexOf("Cubico")).toLowerCase()+" cúbicos";
+		}	
 		
+				
 		String res = cantidad+" "+unidadOriginal.toLowerCase()+aux+df.format(resultado).replace(",", ".")+" "+unidadNueva.toLowerCase();
 			
 		return res;
@@ -56,7 +72,7 @@ public class ConvertorDeUnidades {
 	public static String buscarUnidad(String cadena) {
 		String uni[]= {"Miligramo","Gramo","Kilo","Dracma","Onza","Libra",
 				"Milimetro","Centimetro","Metro","Kilometro",
-				"Pie","Pulgada","Yarda"};
+				"Pie","Pulgada","Yarda","Segundo","Minuto","Hora"};
 		
 		String unidad;
 		int i=0;
@@ -65,6 +81,10 @@ public class ConvertorDeUnidades {
 			i++;
 		
 		unidad= uni[i];		
+		
+		if(cadena.contains("cúbico") || cadena.contains("cúbica") )
+			unidad = unidad+"Cubico";
+			
 		return unidad;
 		
 	}

@@ -1,0 +1,16 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class MetroCubico {
+	
+	private double cantidad;
+	
+	public MetroCubico(double cant) {
+		this.cantidad=cant;
+	}
+	
+	
+	public double getCantidad() {
+		return cantidad;
+	}	
+
+}

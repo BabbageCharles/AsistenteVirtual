@@ -13,4 +13,10 @@
 <fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.CentimetroCubico"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.MetroCubico"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.MilimetroCubico"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PulgadaCubica"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PulgadaCubico"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PieCubico"/>
 </qualifiedTypeNameHistroy>

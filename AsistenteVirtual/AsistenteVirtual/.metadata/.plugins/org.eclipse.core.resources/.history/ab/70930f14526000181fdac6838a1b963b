@@ -1,0 +1,14 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class PieCubico {
+
+private double cantida;
+	
+	public PieCubico(double cantida) {
+		this.cantida = cantida;
+	}
+	
+	public double getCantida() {
+		return cantida;
+	}
+}

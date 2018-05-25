@@ -15,10 +15,6 @@ public class Gramo {
 	public Kilo convertirA(Kilo k) {
 		return new Kilo(this.cantidad/1000);
 	}
-
-	public double getCantidad() {
-		return cantidad;
-	}
 	
 	public Dracma convertirA(Dracma d) {
 		return new Dracma(this.cantidad*0.564);
@@ -31,5 +27,10 @@ public class Gramo {
 	public Libra convertirA(Libra l) {
 		return new Libra(this.cantidad* 0.0022);
 	}
+	
+	public double getCantidad() {
+		return cantidad;
+	}
+	
 	
 }

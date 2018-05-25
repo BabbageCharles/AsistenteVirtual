@@ -1,0 +1,10 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class Minuto {
+
+	private double cantidad;
+	
+	public Minuto(double cant) {
+		this.cantidad= cant;
+	}
+}

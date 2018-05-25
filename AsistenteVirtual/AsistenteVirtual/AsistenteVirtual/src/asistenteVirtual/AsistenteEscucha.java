@@ -54,7 +54,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		if(msjIn.contains("leyes") || msjIn.contains("robótica")) 						
 			return AsistenteVirtual.leyesRobotica(msjIn);
 		
-		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMasa"))
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMedicion"))
 			return AsistenteVirtual.convertor(msjIn);
 
 
@@ -73,7 +73,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 				"lunes", "martes", "miércoles", "jueves", "viernes", "cuántos dias", "qué día será dentro de",
 				"qué dia", "cuánto falta", "qué dia", "cuántas semanas", "cuántos meses", "cuantas semanas",
 				"cuantos meses", "hace cuánto", "pasaron desde", "faltan hasta", "días para", "semanas para",
-				"meses para","hora","la fecha por favor","¿qué día es","hoy","me decís la fecha");
+				"meses para","la hora","hora es","la fecha por favor","¿qué día es","hoy","me decís la fecha");
 		List<String> calculos = Arrays.asList("Cuánto es", "%", "+", "-", "elevado a", "raiz de", "menos", "*", "5/5",
 				":", "^", "dividido", "sqrt", "porciento", "resultado de", "al cuadrado", "al cubo", "a la cuarta",
 				"raiz cuadrada", "raíz cúbica");
@@ -82,7 +82,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 				 "kilo","kilos","dracma","dracmas","onza","onzas","libra","libras",
 				 "centimetros","centimetro","milimetro",
 					"milimetros","Kilometros","Kilometro","metros","metro","yardas","yarda","pulgadas",
-					"pulgada","pies","pie");
+					"pulgada","pies","pie","segundo","segundos","minuto","minutos");
 
 		String a = saludos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String b = agradecimientos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
@@ -105,7 +105,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 			return "Calcular";
 		
 		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error))
-			return "UnidadMasa";
+			return "UnidadMedicion";
 
 		return "Disculpa... no entiendo el pedido, @" + USUARIO + " ¿podrías repetirlo?";
 	}
