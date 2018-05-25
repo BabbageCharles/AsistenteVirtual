@@ -1,0 +1,15 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class Segundo {
+
+	private double cantidad;
+	
+	public Segundo(double cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	public double getCantidad() {
+		return cantidad;
+	}	
+	
+}

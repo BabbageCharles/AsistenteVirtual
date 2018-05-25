@@ -1,0 +1,22 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class PieCubico {
+
+private double cantidad;
+	
+	public PieCubico(double cant) {
+		this.cantida = cant;
+	}
+	
+	public PulgadaCubico convertirA(PulgadaCubico p){
+		return new PulgadaCubico(this.cantidad*61023.7);
+	}	
+	
+	public YardaCubico convertiaA(YardaCubico y) {
+		return new YardaCubico(this.cantidad*1.30795);
+	}
+	
+	public double getCantida() {
+		return cantida;
+	}
+}

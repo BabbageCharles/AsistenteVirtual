@@ -1,0 +1,18 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class Dracma {
+	
+	private double cantidad;
+	
+	public Dracma(double cant) {
+		this.cantidad=cant;
+	}
+	
+	public Onza convertirA(Onza o) {
+		return new Onza(this.cantidad*0.0625);
+	}
+
+	public double getCantidad() {
+		return cantidad;
+	}
+}

@@ -1,0 +1,19 @@
+package asistenteVirtual.unidadesMedicion;
+
+public class Pulgada {
+
+	private double cantidad;
+
+	public Pulgada(double cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	public Pie convertirA(Pie p) {
+		return new Pie(this.cantidad*0.0833);
+	}
+	
+	public double getCantidad() {
+		return cantidad;
+	}	
+	
+}
