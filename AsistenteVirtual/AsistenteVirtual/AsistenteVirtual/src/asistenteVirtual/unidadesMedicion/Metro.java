@@ -20,6 +20,10 @@ public class Metro {
 		return new Kilometro(this.cantidad/1000);
 	}
 	
+	public Yarda convertirA(Yarda yr){
+		return new Yarda(this.cantidad* 1.0936);
+	}
+	
 	public double getCantidad() {
 		return cantidad;
 	}

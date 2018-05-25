@@ -20,7 +20,12 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos centimetros son 1 metro?"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos centimetros son 1 kilometro?"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 100000 centimetros?"));
-
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 1 yarda?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos yardas son 5 kilometros?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos yardas son 5 centimetros?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 1 yarda?"));
+		
+		
 	}
 
 	// RESPONDE

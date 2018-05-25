@@ -55,7 +55,9 @@ public class ConvertorDeUnidades {
 	}	
 	
 	public static String buscarUnidad(String cadena) {
-		String uni[]= {"Miligramos","Miligramo","Gramos","Gramo","Centimetros","Centimetro","Milimetros","Milimetro","Kilometros","Kilometro","Metros","Metro","Yardas","Yarda","Pulgadas","Pulgada","Pies","Pie","Kilos","Kilo"};
+		String uni[]= {"Miligramos","Miligramo","Gramos","Gramo",
+				"Centimetros","Centimetro","Milimetros","Milimetro","Kilometros","Kilometro","Metros",
+				"Metro","Yardas","Yarda","Pulgadas","Pulgada","Pies","Pie","Kilos","Kilo"};
 		String unidad;
 		int i=0;
 		

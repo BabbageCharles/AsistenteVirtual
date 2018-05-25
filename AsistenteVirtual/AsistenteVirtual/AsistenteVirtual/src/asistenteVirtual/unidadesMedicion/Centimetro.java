@@ -20,6 +20,10 @@ public class Centimetro {
 		return new Kilometro(this.cantidad/100000);
 	}
 	
+	public Yarda convertirA(Yarda yr){
+		return new Yarda(this.cantidad* 0.010936);
+	}
+	
 	public double getCantidad() {
 		return cantidad;
 	}
