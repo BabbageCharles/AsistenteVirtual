@@ -16,7 +16,16 @@ public class AsistenteEscucha extends AsistenteVirtual {
 
 	public static void main(String[] args) {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuánto es 1 + 2"));
-
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos metros son 100 centimetros?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos centimetros son 1 metro?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos centimetros son 1 kilometro?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 100000 centimetros?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 1 yarda?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos yardas son 5 kilometros?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos yardas son 5 centimetros?"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins cuantos kilometros son 1 yarda?"));
+		
+		
 	}
 
 	// RESPONDE
@@ -55,8 +64,10 @@ public class AsistenteEscucha extends AsistenteVirtual {
 			return AsistenteVirtual.leyesRobotica(msjIn);
 		
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMasa"))
-			return AsistenteVirtual.masa(msjIn);
-			
+			return AsistenteVirtual.convert(msjIn);
+		
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadLongitud"))
+			return AsistenteVirtual.convert(msjIn);
 
 /*		if (nuevoEscucha.reconocerPedidos(msjIn).equals("Saludar-Agradecer")) {// DOS PEDIDOS
 			return AsistenteVirtual.saludar(msjIn) + "," + AsistenteVirtual.agradecer(msjIn);
@@ -117,30 +128,41 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		
 		List<String> unidadDeMasa = Arrays.asList("miligramo","miligramos","gramo","gramos",
 				 "kilo","kilos","dracma","dracmas","onza","onzas","libra","libras");
+		
+		List<String> unidadDeLongitud = Arrays.asList("centimetros","centimetro","milimetro",
+				"milimetros","Kilometros","Kilometro","metros","metro","yardas","yarda","pulgadas",
+				"pulgada","pies","pie");
+		
+		
 
 		String a = saludos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String b = agradecimientos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String c = fechas.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String d = calculos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst()
 				.orElse("No entiendo el mensaje");
-		String e= unidadDeMasa.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
+		String e= unidadDeMasa.stream().filter(x -> msj.toLowerCase().matches(x)).findFirst().orElse(error);
+		String f= unidadDeLongitud.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
+		
 
 		// un solo pedido
-		if (!a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error))
+		if (!a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error) && f.equals(error))
 			return "Saludar";
 
-		if (a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error))
+		if (a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error) && f.equals(error))
 			return "Agradecer";
 
-		if (a.equals(error) && b.equals(error) && !c.equals(error) && d.equals(error) && e.equals(error))
+		if (a.equals(error) && b.equals(error) && !c.equals(error) && d.equals(error) && e.equals(error) && f.equals(error))
 			return "DarFecha";
 
-		if (a.equals(error) && b.equals(error) && c.equals(error) && !d.equals(error) && e.equals(error))
+		if (a.equals(error) && b.equals(error) && c.equals(error) && !d.equals(error) && e.equals(error) && f.equals(error))
 			return "Calcular";
 		
-		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error))
+		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error) && f.equals(error))
 			return "UnidadMasa";
 
+		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error) && !f.equals(error))
+			return "UnidadLongitud";
+		
 /*		// dos pedidos
 		if (!a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error))
 			return "Saludar-Agradecer";
