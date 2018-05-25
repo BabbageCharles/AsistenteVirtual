@@ -190,23 +190,12 @@ class EscucharTests {
 	}
 	
 	
-	// Unidad de masa
-	/*@Test
+	// Unidad de medicion
+	@Test
 	public void unidadesDeMasa() {
-		
 		Assert.assertEquals(
-				"@delucas 1000 miligramos equivalen a 1 gramo",
-				jenkins.escuchar("@jenkins cuántos gramos son 1000 miligramos")
-			);
-	
-		Assert.assertEquals(
-				"@delucas 1000 miligramos equivalen a 0.001 kilos",
-				jenkins.escuchar("@jenkins cuántos kilos son 1000 miligramos")
-			);
-		
-		Assert.assertEquals(
-				"@delucas 1000 gramos equivalen a 1000000 miligramos",
-				jenkins.escuchar("@jenkins cuántos miligramos son 1000 gramos")
+				"@delucas 1 kilo equivale a 1000 gramos",
+				jenkins.escuchar("@jenkins cuántos gramos son 1 kilo")
 			);
 		
 		Assert.assertEquals(
@@ -215,53 +204,25 @@ class EscucharTests {
 			);
 		
 		Assert.assertEquals(
-				"@delucas 1 kilo equivalen a 1000000 miligramos",
-				jenkins.escuchar("@jenkins cuántos miligramos son 1 kilo")
-			);
-		
-		Assert.assertEquals(
-				"@delucas 1 kilo equivalen a 1000 gramos",
-				jenkins.escuchar("@jenkins cuántos gramos son 1 kilo")
-			);
-		
-		
-		Assert.assertEquals(
-				"@delucas 1000 dracmas equivalen a 62.5 onzas",
-				jenkins.escuchar("@jenkins cuántas onzas son 1000 dracmas")
-			);
-	
-		Assert.assertEquals(
-				"@delucas 1000 dracmas equivalen a 3.906 libras",
-				jenkins.escuchar("@jenkins cuántas libras son 1000 dracmas")
-			);
-		
-		Assert.assertEquals(
-				"@delucas 1000 onzas equivalen a 16000 dracmas",
-				jenkins.escuchar("@jenkins cuántas dracmas son 1000 onzas")
-			);
-		
-		Assert.assertEquals(
-				"@delucas 1000 onzas equivalen a 62.5 libras",
-				jenkins.escuchar("@jenkins cuántas libras son 1000 onzas")
-			);
-		
-		Assert.assertEquals(
-				"@delucas 1 libras equivalen a 256 dracmas",
-				jenkins.escuchar("@jenkins cuántas dracmas son 1 libras")
-			);
-		
-		Assert.assertEquals(
-				"@delucas 1 libras equivalen a 16 onzas",
-				jenkins.escuchar("@jenkins cuántas onzas son 1 libras")
-			);
-		
-		
-	
-		Assert.assertEquals(
 				"@delucas 1000 gramos equivalen a 35.27 onzas",
 				jenkins.escuchar("@jenkins cuántas onzas son 1000 gramos")
-			);		
-	}*/
+			);	
+		
+		Assert.assertEquals(
+				"@delucas 1000 metros equivalen a 100000 centimetros",
+				jenkins.escuchar("@jenkins cuántos centimetros son 1000 metros")
+			);	
+		
+		Assert.assertEquals(
+				"@delucas 1000 centimetros equivalen a 10 metros",
+				jenkins.escuchar("@jenkins cuántos metros son 1000 centimetros")
+			);	
+		
+		/*Assert.assertEquals(
+				"@delucas 1000 centimetros equivalen a 10 metros",
+				jenkins.escuchar("@jenkins cuántas pulgadas son 1000 centimetros")
+			);	*/
+	}
 
 
 }

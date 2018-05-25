@@ -20,4 +20,16 @@ public class Gramo {
 		return cantidad;
 	}
 	
+	public Dracma convertirA(Dracma d) {
+		return new Dracma(this.cantidad*0.564);
+	}
+	
+	public Onza convertirA(Onza o) {
+		return new Onza(this.cantidad*0.03527);
+	}
+	
+	public Libra convertirA(Libra l) {
+		return new Libra(this.cantidad* 0.0022);
+	}
+	
 }

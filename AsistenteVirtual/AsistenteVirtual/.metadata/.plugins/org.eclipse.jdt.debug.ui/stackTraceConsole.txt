@@ -1,7 +1,7 @@
-org.junit.ComparisonFailure: expected:<@delucas faltan [9] dias> but was:<@delucas faltan [8] dias>
+org.junit.ComparisonFailure: expected:<[@delucas son las 3:15 PM]> but was:<[Disculpa... no entiendo el pedido, @delucas ¿podrías repetirlo?]>
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at asistenteTest.EscucharTests.tiempoHasta(EscucharTests.java:146)
+	at asistenteTest.EscucharTests.hora(EscucharTests.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)

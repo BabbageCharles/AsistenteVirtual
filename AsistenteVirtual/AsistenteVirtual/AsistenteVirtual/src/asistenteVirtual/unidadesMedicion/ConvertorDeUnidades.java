@@ -16,6 +16,7 @@ public class ConvertorDeUnidades {
 		String paquete = ConvertorDeUnidades.class.getPackage().getName()+".";		
 		String unidadOriginal= ConvertorDeUnidades.buscarUnidad(cadena.substring(cadena.indexOf(cantidad.toString())));		
 		String unidadNueva = ConvertorDeUnidades.buscarUnidad(cadena.substring(0,cadena.indexOf(cantidad.toString())));	
+		String aux= " equivale a ";
 		
 		try {
 		Class<?> UnidadaOriginalClass = Class.forName(paquete+unidadOriginal);
@@ -37,15 +38,19 @@ public class ConvertorDeUnidades {
 			System.out.println("No se puedo realizar la conversion");
 		}
 		
-		if(resultado != 1)
-			unidadNueva = unidadNueva.toLowerCase()+"s";
+		if(resultado != 1) 
+			unidadNueva = unidadNueva.toLowerCase()+"s";			
 		
-		if(cantidad != 1)
+		if(cantidad != 1) {
 			unidadOriginal = unidadOriginal.toLowerCase()+"s";
+			aux= " equivalen a ";
+		}
+			
 		
-		String res = cantidad+" "+unidadOriginal.toLowerCase()+" equivalen a "+df.format(resultado).replace(",", ".")+" "+unidadNueva.toLowerCase();
+		String res = cantidad+" "+unidadOriginal.toLowerCase()+aux+df.format(resultado).replace(",", ".")+" "+unidadNueva.toLowerCase();
 			
 		return res;
+
 	}	
 	
 	public static String buscarUnidad(String cadena) {
@@ -63,5 +68,6 @@ public class ConvertorDeUnidades {
 		return unidad;
 		
 	}
+
 	
 }
