@@ -9,8 +9,9 @@ import asistenteVirtual.unidadesMedicion.ConvertorDeUnidades;
 
 public class AsistenteVirtual {
 
-	public final static String USUARIO = "delucas"; //Generar nombre random en el constructor
-	public final static Date FECHA_HORA = new GregorianCalendar(2018, 3, 1, 15, 15, 0).getTime();//se generaria en el constructor
+	public final static String USUARIO = "delucas"; // Generar nombre random en
+													// el constructor
+	public final static Date FECHA_HORA = new GregorianCalendar(2018, 3, 1, 15, 15, 0).getTime();// se generaria en el constructor
 
 	// CONSTRUCTORES
 	public AsistenteVirtual(String s) {
@@ -41,32 +42,40 @@ public class AsistenteVirtual {
 
 	// FECHA/*************************************************************************/
 	public static String darFecha(String cadena) {
-		String res =Fecha.darFecha(cadena);
-		return "@"+USUARIO+" "+res;
-	}
-	
-	// Calcular/*************************************************************************/
-	public static String calculo(String cadena) {
-		String res =Calcular.calcular(cadena);
-		return "@"+USUARIO+" "+res;
-	}
-	
-	public static String porcentaje(String cadena) {
-		String res=Calcular.hacerPorcentaje(cadena);
-		return "@"+USUARIO+" "+res;
+		String res = Fecha.darFecha(cadena);
+		return "@" + USUARIO + " " + res;
 	}
 
-	// Leyes de la robotica/******************************************************************/
+	// Calcular/*************************************************************************/
+	public static String calculo(String cadena) {
+		String res = Calcular.calcular(cadena);
+		return "@" + USUARIO + " " + res;
+	}
+
+	public static String porcentaje(String cadena) {
+		String res = Calcular.hacerPorcentaje(cadena);
+		return "@" + USUARIO + " " + res;
+	}
+
+	// Leyes de la
+	// robotica/******************************************************************/
 	public static String leyesRobotica(String cadena) {
-		String leyes= ("1-Un robot no hará daño a un ser humano, ni permitirá con su inacción que sufra daño.\n"
-				+"2-Un robot debe cumplir las órdenes dadas por los seres humanos, a excepción de aquellas que entrasen en conflicto con la primera ley.\n"
-				+"3-Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la primera o con la segunda ley.");
+		String leyes = ("1-Un robot no hará daño a un ser humano, ni permitirá con su inacción que sufra daño.\n"
+				+ "2-Un robot debe cumplir las órdenes dadas por los seres humanos, a excepción de aquellas que entrasen en conflicto con la primera ley.\n"
+				+ "3-Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la primera o con la segunda ley.");
 		return leyes;
 	}
-	
-	// Unidad Masa/******************************************************************/
+
+	// Unidad
+	// Masa/******************************************************************/
 	public static String convertor(String cadena) {
-		String res=ConvertorDeUnidades.darConversion(cadena);
-		return "@"+USUARIO+" "+res;
+		String res = ConvertorDeUnidades.darConversion(cadena);
+		return "@" + USUARIO + " " + res;
 	}
+
+	// pato
+	public static String chFacts(String cadena) {
+		return ChuckNorrisFacts.darFact();
+	}
+
 }

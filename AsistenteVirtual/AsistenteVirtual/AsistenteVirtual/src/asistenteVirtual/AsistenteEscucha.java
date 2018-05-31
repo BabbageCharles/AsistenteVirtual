@@ -16,6 +16,15 @@ public class AsistenteEscucha extends AsistenteVirtual {
 
 	public static void main(String[] args) {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuánto es 1 + 2"));
+		for(int i=0;i<60;i++){
+		System.out.println(AsistenteEscucha.escuchar("@jenkins contame chuck norris facts"));
+		}
+		System.out.println(" ");
+		System.out.println(AsistenteEscucha.escuchar("@jenkins jaja contame mas facts"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins quiero saber facts sobre chuck norris"));
+		System.out.println(AsistenteEscucha.escuchar("@jenkins contame algo sobre norris chuck"));
+
+
 
 	}
 
@@ -57,6 +66,9 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMedicion"))
 			return AsistenteVirtual.convertor(msjIn);
 
+		//pato
+		if (nuevoEscucha.reconocerPedidos(msjIn).equals("ChuckNorris"))
+			return AsistenteVirtual.chFacts(msjIn);
 
 
 		return "Disculpa... no entiendo el pedido, @" + USUARIO + " ¿podrías repetirlo?";// NO ENTENDIMIENTO DEL MENSAJE
@@ -83,6 +95,10 @@ public class AsistenteEscucha extends AsistenteVirtual {
 				 "centimetros","centimetro","milimetro",
 					"milimetros","Kilometros","Kilometro","metros","metro","yardas","yarda","pulgadas",
 					"pulgada","pies","pie","segundo","segundos","minuto","minutos");
+		
+		////pato
+		List<String> chuckNorris =Arrays.asList("chuck","norris","facts","fact");
+		////pato
 
 		String a = saludos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String b = agradecimientos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
@@ -90,22 +106,28 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		String d = calculos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst()
 				.orElse("No entiendo el mensaje");
 		String e= unidadDeMasa.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
+		String f=chuckNorris.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 
 		// un solo pedido
-		if (!a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error))
+		if (!a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error)&& f.equals(error))
 			return "Saludar";
 
-		if (a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error))
+		if (a.equals(error) && !b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error)&& f.equals(error))
 			return "Agradecer";
 
-		if (a.equals(error) && b.equals(error) && !c.equals(error) && d.equals(error) && e.equals(error))
+		if (a.equals(error) && b.equals(error) && !c.equals(error) && d.equals(error) && e.equals(error)&& f.equals(error))
 			return "DarFecha";
 
-		if (a.equals(error) && b.equals(error) && c.equals(error) && !d.equals(error) && e.equals(error))
+		if (a.equals(error) && b.equals(error) && c.equals(error) && !d.equals(error) && e.equals(error)&& f.equals(error))
 			return "Calcular";
 		
-		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error))
+		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error)&& f.equals(error))
 			return "UnidadMedicion";
+		
+		///pato
+		if(a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error) && !f.equals(error))
+			return "ChuckNorris";
+		///pato
 
 		return "Disculpa... no entiendo el pedido, @" + USUARIO + " ¿podrías repetirlo?";
 	}
