@@ -8,7 +8,6 @@
 <fullyQualifiedTypeName name="asistenteVirtual.ConvertorDeUnidades"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.Miligramo"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
@@ -19,4 +18,5 @@
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PulgadaCubica"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PulgadaCubico"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PieCubico"/>
+<fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
 </qualifiedTypeNameHistroy>

@@ -19,7 +19,7 @@ public class ConvertorDeUnidades {
 		
 		try {
 		Class<?> UnidadaOriginalClass = Class.forName(paquete+"."+unidadOriginal);
-		Class<?> UnidadaNuevaClass = Class.forName(paquete+"."+unidadNueva);
+		Class<?> UnidadaNuevaClass = Class.forName(paquete+unidadNueva);
 		
 		Constructor<?> constructor = UnidadaOriginalClass.getConstructor(double.class);
 		Object uOri = constructor.newInstance(cantidad);		
