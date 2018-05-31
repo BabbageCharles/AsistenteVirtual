@@ -1,7 +1,7 @@
-org.junit.ComparisonFailure: expected:<[@delucas 1333 horas equivalen a 79980 minutos]> but was:<[Disculpa... no entiendo el pedido, @delucas ¿podrías repetirlo?]>
+org.junit.ComparisonFailure: expected:<...s 1 kilo equivale a [100]0 gramos> but was:<...s 1 kilo equivale a []0 gramos>
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at asistenteTest.EscucharTests.unidadesDeMedicion(EscucharTests.java:247)
+	at asistenteTest.EscucharTests.unidadesDeMedicion(EscucharTests.java:196)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)

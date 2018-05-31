@@ -10,16 +10,17 @@ public class ConvertorDeUnidades {
 	
 	public static String darConversion(String cadena) {
 		
+		DecimalFormat df = new DecimalFormat("#.#######");
 		double resultado=0;		
 		Integer cantidad= Utilitarias.buscarEntero(cadena);
-		String paquete = ConvertorDeUnidades.class.getPackage().getName();		
+		String paquete = ConvertorDeUnidades.class.getPackage().getName()+".";		
 		String unidadOriginal= ConvertorDeUnidades.buscarUnidad(cadena.substring(cadena.indexOf(cantidad.toString())));		
 		String unidadNueva = ConvertorDeUnidades.buscarUnidad(cadena.substring(0,cadena.indexOf(cantidad.toString())));	
-		
+		String aux= " equivale a ";
 		
 		try {
-		Class<?> UnidadaOriginalClass = Class.forName(paquete+"."+unidadOriginal);
-		Class<?> UnidadaNuevaClass = Class.forName(paquete+"."+unidadNueva);
+		Class<?> UnidadaOriginalClass = Class.forName(paquete+unidadOriginal);
+		Class<?> UnidadaNuevaClass = Class.forName(paquete+unidadNueva);
 		
 		Constructor<?> constructor = UnidadaOriginalClass.getConstructor(double.class);
 		Object uOri = constructor.newInstance(cantidad);		
@@ -37,7 +38,34 @@ public class ConvertorDeUnidades {
 			System.out.println("No se puedo realizar la conversion");
 		}
 		
-		return ConvertorDeUnidades.darFormatoSalida(unidadOriginal, unidadNueva, cantidad, resultado);
+		// todos estos if son para mostras bien la salida, ej si llega a ser cubico, si es unidad en plural o singular, etc
+		if(resultado != 1) {
+			if(cadena.contains("cúbico"))
+				unidadNueva = unidadNueva.substring(0,unidadNueva.indexOf("Cubico")).toLowerCase()+"s"+" cúbicos";
+			else
+				unidadNueva = unidadNueva.toLowerCase()+"s";
+		}
+		else {
+			if(cadena.contains("cúbico"))
+				unidadNueva = unidadNueva.substring(0,unidadNueva.indexOf("Cubico")).toLowerCase()+" cúbicos";
+		}
+		
+		if(cantidad != 1) {
+			if(cadena.contains("cúbico"))
+				unidadOriginal = unidadOriginal.substring(0,unidadOriginal.indexOf("Cubico")).toLowerCase()+"s"+" cúbicos";
+			else
+				unidadOriginal = unidadOriginal.toLowerCase()+"s";
+			aux= " equivalen a ";
+		}
+		else {
+			if(cadena.contains("cúbico"))
+				unidadOriginal = unidadOriginal.substring(0,unidadOriginal.indexOf("Cubico")).toLowerCase()+" cúbicos";
+		}	
+		
+				
+		String res = cantidad+" "+unidadOriginal.toLowerCase()+aux+df.format(resultado).replace(",", ".")+" "+unidadNueva.toLowerCase();
+			
+		return res;
 
 	}	
 	
@@ -61,8 +89,7 @@ public class ConvertorDeUnidades {
 		
 	}
 	
-	public static String darFormatoSalida(String uniOri,String uniNue,Integer cantOri,double cantNue) {
-		
+	public static String darFormatoSalida(String uniOri,String uniNue,double cantOri,double cantNue) {
 		DecimalFormat df = new DecimalFormat("#.#######");
 		String aux= " equivale a ";
 		
@@ -78,7 +105,7 @@ public class ConvertorDeUnidades {
 		}
 		
 		if(cantOri != 1) {
-			if(uniOri.contains("Cubico"))
+			if(uniOri.contains("cúbico"))
 				uniOri = uniOri.substring(0,uniOri.indexOf("Cubico")).toLowerCase()+"s"+" cúbicos";
 			else
 				uniOri = uniOri.toLowerCase()+"s";
