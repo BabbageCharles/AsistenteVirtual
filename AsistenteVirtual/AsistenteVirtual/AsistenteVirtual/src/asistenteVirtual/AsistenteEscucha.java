@@ -16,9 +16,9 @@ public class AsistenteEscucha extends AsistenteVirtual {
 
 	public static void main(String[] args) {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuánto es 1 + 2"));
-		for(int i=0;i<60;i++){
-		System.out.println(AsistenteEscucha.escuchar("@jenkins contame chuck norris facts"));
-		}
+//		for (int i = 0; i < 60; i++) {
+//			System.out.println(AsistenteEscucha.escuchar("@jenkins contame chuck norris facts"));
+//		}
 		System.out.println(" ");
 		System.out.println(AsistenteEscucha.escuchar("@jenkins jaja contame mas facts"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins quiero saber facts sobre chuck norris"));
@@ -66,7 +66,6 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("UnidadMedicion"))
 			return AsistenteVirtual.convertor(msjIn);
 
-		//pato
 		if (nuevoEscucha.reconocerPedidos(msjIn).equals("ChuckNorris"))
 			return AsistenteVirtual.chFacts(msjIn);
 
@@ -96,9 +95,8 @@ public class AsistenteEscucha extends AsistenteVirtual {
 					"milimetros","Kilometros","Kilometro","metros","metro","yardas","yarda","pulgadas",
 					"pulgada","pies","pie","segundo","segundos","minuto","minutos");
 		
-		////pato
 		List<String> chuckNorris =Arrays.asList("chuck","norris","facts","fact");
-		////pato
+		
 
 		String a = saludos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
 		String b = agradecimientos.stream().filter(x -> msj.toLowerCase().contains(x)).findFirst().orElse(error);
@@ -123,11 +121,10 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		
 		if (a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && !e.equals(error)&& f.equals(error))
 			return "UnidadMedicion";
-		
-		///pato
+				
 		if(a.equals(error) && b.equals(error) && c.equals(error) && d.equals(error) && e.equals(error) && !f.equals(error))
 			return "ChuckNorris";
-		///pato
+		
 
 		return "Disculpa... no entiendo el pedido, @" + USUARIO + " ¿podrías repetirlo?";
 	}

@@ -57,8 +57,7 @@ public class AsistenteVirtual {
 		return "@" + USUARIO + " " + res;
 	}
 
-	// Leyes de la
-	// robotica/******************************************************************/
+	// Leyes de la robotica/******************************************************************/
 	public static String leyesRobotica(String cadena) {
 		String leyes = ("1-Un robot no hará daño a un ser humano, ni permitirá con su inacción que sufra daño.\n"
 				+ "2-Un robot debe cumplir las órdenes dadas por los seres humanos, a excepción de aquellas que entrasen en conflicto con la primera ley.\n"
@@ -66,14 +65,12 @@ public class AsistenteVirtual {
 		return leyes;
 	}
 
-	// Unidad
-	// Masa/******************************************************************/
+	// Unidad Masa/******************************************************************/
 	public static String convertor(String cadena) {
 		String res = ConvertorDeUnidades.darConversion(cadena);
 		return "@" + USUARIO + " " + res;
 	}
 
-	// pato
 	public static String chFacts(String cadena) {
 		return ChuckNorrisFacts.darFact();
 	}
