@@ -15,7 +15,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 	}
 
 	public static void main(String[] args) {
-		/*
+		
 		for(int i=0;i<60;i++){
 		System.out.println(AsistenteEscucha.escuchar("@jenkins contame chuck norris facts"));
 		}
@@ -23,7 +23,7 @@ public class AsistenteEscucha extends AsistenteVirtual {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins jaja contame mas facts"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins quiero saber facts sobre chuck norris"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins contame algo sobre norris chuck"));
-		 */
+		 
 
 
 	}

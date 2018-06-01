@@ -73,7 +73,7 @@ public class AsistenteVirtual {
 		return "@" + USUARIO + " " + res;
 	}
 
-	// Chuck Norris
+	// pato
 	public static String chFacts(String cadena) {
 		return ChuckNorrisFacts.darFact();
 	}
