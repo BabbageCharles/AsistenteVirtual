@@ -3,7 +3,7 @@ package asistenteVirtual;
 public class ChuckNorrisFacts {
 
 	public static int indice = 0;
-	public static int auxiliar[];
+	public static int auxiliar[]= new int[51];
 	public static String facts[] = {
 			"No existe la teoría de la evolución, tan sólo una lista de las especies que Chuck Norris permite vivir.",
 			"Chuck Norris borró la papelera de reciclaje.",
@@ -52,13 +52,12 @@ public class ChuckNorrisFacts {
 			"Chuck Norris no hizo una planilla de métricas ni un solo test en toda la cursada, y sin embargo se sacó 10 en Programación Avanzada.", };
 
 	public static String darFact() {
-
-		auxiliar = new int[51];
+	
 		int i = 0;
 
 		if (indice == 51) {
 			for (int j = 0; j < 51; j++) {
-				auxiliar[i] = 0;
+				auxiliar[j] = 0;
 			}
 			indice = 0;
 		}

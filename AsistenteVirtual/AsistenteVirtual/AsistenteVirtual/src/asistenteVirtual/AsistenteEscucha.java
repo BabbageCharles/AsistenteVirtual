@@ -16,9 +16,9 @@ public class AsistenteEscucha extends AsistenteVirtual {
 
 	public static void main(String[] args) {
 		System.out.println(AsistenteEscucha.escuchar("@jenkins cuánto es 1 + 2"));
-//		for (int i = 0; i < 60; i++) {
-//			System.out.println(AsistenteEscucha.escuchar("@jenkins contame chuck norris facts"));
-//		}
+		for (int i = 0; i < 60; i++) {
+			System.out.println(AsistenteEscucha.escuchar("@jenkins contame chuck norris facts"));
+		}
 		System.out.println(" ");
 		System.out.println(AsistenteEscucha.escuchar("@jenkins jaja contame mas facts"));
 		System.out.println(AsistenteEscucha.escuchar("@jenkins quiero saber facts sobre chuck norris"));
