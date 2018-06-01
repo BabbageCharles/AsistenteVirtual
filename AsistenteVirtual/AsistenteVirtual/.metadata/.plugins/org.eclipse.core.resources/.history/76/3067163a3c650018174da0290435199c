@@ -74,7 +74,7 @@ public class AsistenteVirtual {
 	}
 
 	// Chuck Norris
-	public static String chuckFacts(String cadena) {
+	public static String chFacts(String cadena) {
 		return ChuckNorrisFacts.darFact();
 	}
 
