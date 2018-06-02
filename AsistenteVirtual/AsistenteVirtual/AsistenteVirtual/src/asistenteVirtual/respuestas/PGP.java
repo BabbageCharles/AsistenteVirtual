@@ -26,30 +26,36 @@ import java.security.spec.X509EncodedKeySpec;
 
 public class PGP {
 
-	private static X509EncodedKeySpec encodedKeySpec;
-
 	/**
-	 * The message is created like so: - Generates a random KeyPair - Encrypt the
-	 * message with the private key from the generated key pair - Encrypt the
-	 * generated public key with given public key
+	 * 
+	 * The message is created like so:
+	 * 
+	 * - GENERAR UNA KEYPAIR RANDOM
+	 * 
+	 * -ENCRIPTAR EL MENSAJE CON CLAVE PRIVADA DESDE LA KEYPAIR GENERADA
+	 * 
+	 * - ENCRIPTAR LA CLAVE PUBLICA CON LA CLAVE GENERADA
 	 *
-	 * @param message
-	 *            The message to encrypt
-	 * @param key
-	 *            The key to encrypt with
-	 * @return The encrypted message
-	 * @throws GeneralSecurityException
+	 * @param message2 MENSAJE A ENCRIPTAR
+	 * 
+	 * 
+	 * @param key LLAVE PARA ENCRIPTAR
+	 * 
+	 * 
+	 * @return MENSAJE ENCRIPTADO
+	 * 
+	 * 
 	 */
 
-	public static ByteBuffer encrypt(String message2, PublicKey key) throws GeneralSecurityException {
+	public static String encrypt(String message2, PublicKey key) throws GeneralSecurityException {
 
 		byte[] message = message2.getBytes();
 		KeyPair pair = generateKeyPair();
 
 		PrivateKey privateKey = pair.getPrivate();
-		System.out.println(privateKey.getEncoded().length);
+//		System.out.println(privateKey.getEncoded().length);
 		byte[] aux = privateKey.getEncoded();
-		System.out.println(aux.length);
+//		System.out.println(aux.length);
 
 		byte[] aux1 = new byte[100];
 		byte[] aux2 = new byte[100];
@@ -90,7 +96,11 @@ public class PGP {
 
 		byte[] encryptedMessage = cipher.doFinal(message);
 
+//		System.out.println("mensaje encriptado" + encryptedMessage.toString());
+
 		cipher.init(Cipher.ENCRYPT_MODE, key);
+
+		// REALIZO ESTO PORQUE LA LLAVE ES MUY GRANDE
 
 		byte[] encryptedPublicKey1 = cipher.doFinal(aux1);
 		byte[] encryptedPublicKey7 = cipher.doFinal(aux7);
@@ -103,45 +113,80 @@ public class PGP {
 		String auxencrypt = encryptedPublicKey1.toString() + encryptedPublicKey2.toString()
 				+ encryptedPublicKey3.toString() + encryptedPublicKey4.toString() + encryptedPublicKey5.toString()
 				+ encryptedPublicKey6.toString() + encryptedPublicKey7.toString();
-
-		byte[] encryptedPublicKey = auxencrypt.getBytes();
-
+		// System.out.println("llave encriptada"+auxencrypt);
+		// byte [] encryptedPublicKey = auxencrypt.getBytes();
+		// System.out.println(encryptedPublicKey.toString());
 		// byte[] encryptedPublicKey = cipher.doFinal(pair.getPublic().getEncoded());
 		// byte[] encryptedPublicKey;
 		// String ab="12345678";
 		// encryptedPublicKey= ab.getBytes();
 
-		ByteBuffer buffer = ByteBuffer.allocate((encryptedPublicKey.length + encryptedMessage.length) + 4);
+		// String buffer = ""+encryptedPublicKey.length +
+		// ByteBuffer buffer = ByteBuffer.allocate((encryptedPublicKey.length +
+		// encryptedMessage.length) + 4);
 
-		buffer.putInt(encryptedPublicKey.length);
+		// System.out.println(encryptedPublicKey.length);
+		// System.out.println(encryptedMessage.length);
 
-		buffer.put(encryptedPublicKey);
+		// buffer.putInt(encryptedPublicKey.length);
 
-		buffer.put(encryptedMessage);
+		// buffer.put(encryptedPublicKey);
 
-		return buffer;
+		// buffer.put(encryptedMessage);
+
+		String bufferstring = "" + auxencrypt.length() + auxencrypt + encryptedMessage;
+
+		// return buffer.array().toString();
+//		System.out.println(bufferstring);
+		return bufferstring;
 
 	}
 
 	/**
-	 * The message is decrypted like so: - Read the encrypted public key - Decrypt
-	 * the public key with the private key - Read the encrypted message - Use the
-	 * decrypted public key to decrypt the encrypted message
 	 * 
-	 * @param message
-	 *            The encrypted message
+	 * LEER LA CLAVE ENCRIPTADA
+	 * 
+	 * DESENCRIPTAR LA CLAVE PUBLICA CON LA CLAVE PRIVADA
+	 * 
+	 * LEER EL MENSAJE ENCRIPTADO
+	 * 
+	 * USAR LA CLAVE PUBLICA DESENCRIPTADA PARA DESENCRIPTAR EL MENSAJE ENCRIPTADO
+	 * 
+	 * @param message2
+	 *            MENSAJE ENCRIPTADO
+	 * 
+	 * 
 	 * @param key
-	 *            The private key
-	 * @return The decrypted message
-	 * @throws GeneralSecurityException
+	 *            LLAVE PRIVADA
+	 * 
+	 * 
+	 * @return MENSAJE DESENCRIPTADO
+	 * 
 	 */
 
-	public static String decrypt(ByteBuffer buffer, PrivateKey key) throws GeneralSecurityException {
+	public static String decrypt(String message2, PrivateKey key) throws GeneralSecurityException {
 
-		byte[] encyptedPublicKey = new byte[1];
+		byte[] message = message2.getBytes();
 
-		buffer.flip();
+//		System.out.println(message.length);
+//		System.out.println(message.toString());
+
+		ByteBuffer buffer = ByteBuffer.allocate(message.length);
+//		System.out.println("capacidad" + buffer.capacity());
+		buffer = ByteBuffer.wrap(message);
+//		System.out.println("DESPUES DE WRAP" + buffer);
+//		System.out.println("tamañoa  esperar" + buffer.getInt(0));
+		// int keyLength = 89;
+		int keyLenght = buffer.getInt();
+
+//		System.out.println(keyLenght);
+		byte[] encyptedPublicKey = new byte[keyLenght];
+
+		// SE ROMPE ACA
+
 		buffer.get(encyptedPublicKey);
+//		System.out.println(buffer);
+		// encyptedPublicKey= message.clone();
 
 		Cipher cipher = Cipher.getInstance("RSA");
 
@@ -154,8 +199,8 @@ public class PGP {
 		cipher.init(Cipher.DECRYPT_MODE, publicKey);
 
 		byte[] encryptedMessage = new byte[buffer.remaining()];
-
-		buffer.get(encryptedMessage);
+		// byte[] encryptedMessage =
+		// buffer.get(encryptedMessage);
 
 		return cipher.doFinal(encryptedMessage).toString();
 
@@ -167,7 +212,7 @@ public class PGP {
 		KeyFactory factory = KeyFactory.getInstance("RSA");
 		KeyPair pair = generateKeyPair();
 
-		setEncodedKeySpec(new X509EncodedKeySpec(encodedKey));
+		X509EncodedKeySpec encodedKeySpec = new X509EncodedKeySpec(encodedKey);
 
 		return factory.generatePublic(new X509EncodedKeySpec(pair.getPublic().getEncoded()));
 
@@ -194,14 +239,6 @@ public class PGP {
 			temp[i * 2 + 1] = (char) (val > 9 ? val + 'A' - 10 : val + '0');
 		}
 		return new String(temp);
-	}
-
-	public static X509EncodedKeySpec getEncodedKeySpec() {
-		return encodedKeySpec;
-	}
-
-	public static void setEncodedKeySpec(X509EncodedKeySpec encodedKeySpec) {
-		PGP.encodedKeySpec = encodedKeySpec;
 	}
 
 }

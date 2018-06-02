@@ -8,7 +8,6 @@
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.Miligramo"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
-<fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.CentimetroCubico"/>
@@ -18,6 +17,16 @@
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PulgadaCubico"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PieCubico"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
-<fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.Saludar"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.Agradecer"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.Calcular"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.Fecha"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.ChuckNorrisFacts"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.LeyesRobotica"/>
+<fullyQualifiedTypeName name="asistenteVirtual.Pedido"/>
+<fullyQualifiedTypeName name="asistenteVirtual.Utilitarias"/>
 <fullyQualifiedTypeName name="asistenteVirtual.AsistenteResponde"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.Default"/>
+<fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
+<fullyQualifiedTypeName name="asistenteVirtual.AsistenteEscucha"/>
 </qualifiedTypeNameHistroy>
