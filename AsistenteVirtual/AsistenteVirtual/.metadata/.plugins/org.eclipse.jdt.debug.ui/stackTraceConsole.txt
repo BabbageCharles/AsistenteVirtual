@@ -1,7 +1,7 @@
-org.junit.ComparisonFailure: expected:<...s 1 kilo equivale a [100]0 gramos> but was:<...s 1 kilo equivale a []0 gramos>
+org.junit.ComparisonFailure: expected:<...l de 2018 pasaron 36[5] días> but was:<...l de 2018 pasaron 36[6] días>
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at asistenteTest.EscucharTests.unidadesDeMedicion(EscucharTests.java:196)
+	at asistenteTest.FechaTests.tiempoDesde(FechaTests.java:186)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)

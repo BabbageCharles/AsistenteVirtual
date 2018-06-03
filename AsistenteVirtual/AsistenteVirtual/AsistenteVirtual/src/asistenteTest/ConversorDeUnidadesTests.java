@@ -48,6 +48,10 @@ public class ConversorDeUnidadesTests {
 		conversor.establecerSiguiente(chuckNorris);
 		chuckNorris.establecerSiguiente(leyesRobotica);
 		leyesRobotica.establecerSiguiente(defaultOperation);
+		
+		Assert.assertEquals("@delucas no se puede realizar la conversion de dos unidides diferentes",
+				jenkins.escuchar("@jenkins cuántos gramos son 1 hora"));
+		
 		Assert.assertEquals("@delucas 1 kilo equivale a 1000 gramos",
 				jenkins.escuchar("@jenkins cuántos gramos son 1 kilo"));
 

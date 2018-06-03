@@ -9,9 +9,6 @@ public class Saludar implements AsistenteEscucha {
 
 	private AsistenteEscucha siguiente;
 
-	// public final static Date FECHA_HORA = new GregorianCalendar(2018, 3, 1, 15,
-	// 15, 0).getTime();// se generaria en el constructor
-
 	public final static String USUARIO = "delucas"; // Generar nombre random en elconstructor
 
 	@Override

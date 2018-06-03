@@ -18,6 +18,7 @@
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PulgadaCubico"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.PieCubico"/>
 <fullyQualifiedTypeName name="asistenteVirtual.unidadesMedicion.ConvertorDeUnidades"/>
-<fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
 <fullyQualifiedTypeName name="asistenteVirtual.AsistenteResponde"/>
+<fullyQualifiedTypeName name="asistenteVirtual.AsistenteVirtual"/>
+<fullyQualifiedTypeName name="asistenteVirtual.respuestas.Fecha"/>
 </qualifiedTypeNameHistroy>

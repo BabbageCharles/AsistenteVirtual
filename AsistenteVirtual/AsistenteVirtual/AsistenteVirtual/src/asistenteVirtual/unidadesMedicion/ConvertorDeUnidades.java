@@ -57,7 +57,7 @@ public class ConvertorDeUnidades implements AsistenteEscucha {
 			resultado = (double) methodGetCant.invoke(uNue);
 
 		} catch (Exception e) {
-			System.out.println("No se puedo realizar la conversion");
+			return "@" + USUARIO + " "+"no se puede realizar la conversion de dos unidides diferentes";
 		}
 
 		return "@" + USUARIO + " "
