@@ -1,0 +1,118 @@
+package chat;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultListModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
+
+public class Agregar_Sala extends JDialog {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	// private Pantalla_Principal frame = new Pantalla_Principal();
+
+	/**
+	 * Launch the application.
+	 */
+	// public static void main(String[] args) {
+	// EventQueue.invokeLater(new Runnable() {
+	// public void run() {
+	// try {
+	// Agregar_Sala frame = new Agregar_Sala();
+	// frame.setVisible(true);
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
+	// });
+	// }
+
+	/**
+	 * Create the frame.
+	 * 
+	 * @param list
+	 * @param listmodel
+	 */
+	public Agregar_Sala(JList list, DefaultListModel listmodel) {
+		setTitle("Agregar nueva sala");
+		
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.pack();
+		setBounds(100, 100, 440, 196);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+
+		JLabel lblNombreDeLa = new JLabel("Nombre de la nueva sala:");
+
+		textField = new JTextField();
+		textField.setColumns(10);
+
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// frame.setlistmodel(textField.getText());
+
+				if (ServidorChat.agregarSala(textField.getText())) {
+					listmodel.addElement(textField.getText());
+					list.setModel(listmodel);
+				}
+				dispose();
+			}
+		});
+
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(28)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNombreDeLa)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addComponent(btnAceptar)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnCancelar))
+							.addComponent(textField, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(151, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNombreDeLa)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(27)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAceptar)
+						.addComponent(btnCancelar))
+					.addContainerGap(145, Short.MAX_VALUE))
+		);
+		contentPane.setLayout(gl_contentPane);
+	}
+
+	public String getNombreSala() {
+		return textField.getText();
+	}
+
+}
