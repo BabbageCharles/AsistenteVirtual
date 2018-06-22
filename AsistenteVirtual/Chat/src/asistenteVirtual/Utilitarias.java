@@ -10,12 +10,32 @@ public class Utilitarias {
 		Pattern pattern = Pattern.compile(regexp);
 		Matcher matcher = pattern.matcher(s);
 		matcher.find();
-		// VER
-//		if (matcher.matches() == false)
-//			return -1;
-		int i = Integer.parseInt(matcher.group());
+		int i = Integer.parseInt(matcher.group());		
 		return i;
 	}
+	
+	public static Float buscarNumero(String s) {
+		boolean flag= false;
+		char[] arreglo= s.toCharArray();
+		for(char caracter: arreglo) {
+			if(Character.isDigit(caracter))
+				flag=true;
+		}
+		
+		if(flag == false)
+			return (float)-1;
+		
+		String regexp = "([0-9.]+)";
+		Pattern pattern = Pattern.compile(regexp);
+		Matcher matcher = pattern.matcher(s);
+		matcher.find();
+		int a= matcher.groupCount();
+		System.out.println(a);		
+		Float i = Float.parseFloat(matcher.group());
+		return i;
+	}
+	
+	
 
 	public static int cantidadNombres(String s) {
 

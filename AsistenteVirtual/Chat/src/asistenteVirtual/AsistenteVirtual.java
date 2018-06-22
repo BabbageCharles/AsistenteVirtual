@@ -2,6 +2,7 @@ package asistenteVirtual;
 
 import asistenteVirtual.respuestas.Agradecer;
 import asistenteVirtual.respuestas.Calcular;
+import asistenteVirtual.respuestas.CalcularDeudas;
 import asistenteVirtual.respuestas.ChuckNorrisFacts;
 import asistenteVirtual.respuestas.Default;
 import asistenteVirtual.respuestas.Fecha;
@@ -21,6 +22,7 @@ public class AsistenteVirtual implements AsistenteEscucha {
 			AsistenteEscucha chuckNorris = new ChuckNorrisFacts();
 			AsistenteEscucha leyesRobotica = new LeyesRobotica();
 			AsistenteEscucha gag = new GagImage();
+			AsistenteEscucha deuda = new CalcularDeudas();
 			AsistenteEscucha defaultOperation = new Default();
 
 
@@ -32,8 +34,8 @@ public class AsistenteVirtual implements AsistenteEscucha {
 		fecha.establecerSiguiente(conversor);
 		conversor.establecerSiguiente(chuckNorris);
 		chuckNorris.establecerSiguiente(gag);		
-		gag.establecerSiguiente(leyesRobotica);
-		// chuckNorris.establecerSiguiente(pgp);
+		gag.establecerSiguiente(deuda);
+		deuda.establecerSiguiente(leyesRobotica);
 		leyesRobotica.establecerSiguiente(defaultOperation);
 	}
 

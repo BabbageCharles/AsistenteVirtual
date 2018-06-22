@@ -13,6 +13,6 @@
 		<mapping resource="chat/usuario.hbm.xml" />
 		<mapping resource="chat/sala.hbm.xml" />
 		<mapping resource="chat/meme.hbm.xml" />
-
+		<mapping resource="chat/deuda.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
