@@ -12,6 +12,8 @@ import javax.persistence.criteria.Root;
 import javax.swing.DefaultListModel;
 
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -247,14 +249,18 @@ public class ServidorChat {
 
 	}
 
-	public static boolean actualizarDeudas(String nombre, int monto, String user) {
+	public static boolean actualizarDeudas(String nombre, float monto, String user) {
 
 		CriteriaQuery<Deuda> criteriaQuery = criteriaBuilder.createQuery(Deuda.class);
 		Root<Deuda> root = criteriaQuery.from(Deuda.class);
-		criteriaQuery.select(root).where(criteriaBuilder.like(root.get("acreedor"), user),
-				criteriaBuilder.like(root.get("deudor"), nombre));// ACREEDOR
-
-		if (session.createQuery(criteriaQuery).getResultList().isEmpty()) {
+		//criteriaQuery.select(root).where(criteriaBuilder.like(root.get("acreedor"), user),
+			//	criteriaBuilder.like(root.get("deudor"), nombre));// ACREEDOR
+		Criteria cr1 =
+		session.createCriteria(Deuda.class).add(Restrictions.eq("acreedor", user)).add(Restrictions.eq("deudor",nombre));
+		
+		List<Deuda> deudas1 = cr1.list();
+		
+		if (deudas1.isEmpty()) {//session.createQuery(criteriaQuery).getResultList().isEmpty()) {
 
 			Deuda deuda = new Deuda();
 			deuda.setAcreedor(user);
@@ -286,16 +292,24 @@ public class ServidorChat {
 		} else {
 			Deuda deuda = new Deuda();
 			Deuda deuda2 = new Deuda();
-			float nuevomonto = monto + session.createQuery(criteriaQuery).getResultList().get(0).getDinero();
+			float nuevomonto = monto + deudas1.get(0).getDinero();//session.createQuery(criteriaQuery).getResultList().get(0).getDinero();
 			float aux,aux2;
-			criteriaQuery.select(root).where(criteriaBuilder.like(root.get("acreedor"), nombre),
-					criteriaBuilder.like(root.get("deudor"), user)); // DEUDOR
-			if (!session.createQuery(criteriaQuery).getResultList().isEmpty()) { //crear otra session???
-				aux = session.createQuery(criteriaQuery).getResultList().get(0).getDinero();
+			Criteria cr2 =
+					session.createCriteria(Deuda.class).add(Restrictions.eq("acreedor", nombre)).add(Restrictions.eq("deudor",user));
+			/*criteriaQuery.select(root).where(criteriaBuilder.like(root.get("acreedor"), nombre),
+					criteriaBuilder.like(root.get("deudor"), user)); // DEUDOR*/
+			List<Deuda> deudas2 = cr2.list();
+			
+			if (!deudas2.isEmpty()) {//!session.createQuery(criteriaQuery).getResultList().isEmpty()) { //crear otra session???
+				aux = deudas2.get(0).getDinero();//session.createQuery(criteriaQuery).getResultList().get(0).getDinero();
 				if(aux==0){
 					deuda.setAcreedor(user);
 					deuda.setDeudor(nombre);
 					deuda.setDinero(nuevomonto);
+					
+					deuda2.setAcreedor(nombre);
+					deuda2.setDeudor(user);
+					deuda2.setDinero(0);
 				} else {
 					aux2=nuevomonto-aux;
 					if(aux2>0){
@@ -319,6 +333,7 @@ public class ServidorChat {
 				
 				Transaction tx = session.beginTransaction();
 				try {
+					session.clear();
 					session.saveOrUpdate(deuda);
 					session.saveOrUpdate(deuda2);
 					tx.commit();
@@ -346,5 +361,77 @@ public class ServidorChat {
 
 //		return false;
 	}
+	
+	public static List<Deuda> levantarDeudas(String nombre, String user){
+		
+		CriteriaQuery<Deuda> criteriaQuery = criteriaBuilder.createQuery(Deuda.class);
+		Criteria cr1 =
+				session.createCriteria(Deuda.class).add(Restrictions.eq("acreedor", user)).add(Restrictions.eq("deudor",nombre));
+		
+		return cr1.list();
+	}
+	
+	public static List<Deuda> MisDeudas(String user){
+		
+		CriteriaQuery<Deuda> criteriaQuery = criteriaBuilder.createQuery(Deuda.class);
+		Criteria cr1 =
+				session.createCriteria(Deuda.class).add(Restrictions.eq("deudor", user));
+		
+		return cr1.list();
+	}
+	
+	public static List<Deuda> MisDeudores(String user){
+		
+		CriteriaQuery<Deuda> criteriaQuery = criteriaBuilder.createQuery(Deuda.class);
+		Criteria cr1 =
+				session.createCriteria(Deuda.class).add(Restrictions.eq("acreedor",user));
+		
+		return cr1.list();
+	}
+	
+	public static boolean SimplificarDeudas(String[] nombre,String user) {
+		CriteriaQuery<Deuda> criteriaQuery = criteriaBuilder.createQuery(Deuda.class);
+		Criteria crA =
+				session.createCriteria(Deuda.class).add(Restrictions.eq("acreedor", user)).add(Restrictions.eq("deudor",nombre));
+		List<Deuda> deudas = crA.list();
+		
+		Criteria crD =
+				session.createCriteria(Deuda.class).add(Restrictions.eq("acreedor",nombre)).add(Restrictions.eq("deudor",user));
+		List<Deuda> deudas1 = crD.list();
+		
+		Deuda deuda = new Deuda();
+		Deuda deuda2 = new Deuda();
+		
+		
+		/* TERMINAR DE VER
+		if(nombre.length == 1) {
+			deuda.setAcreedor(user);
+			deuda.setDeudor(nombre[0]);
+			deuda.setDinero(0);
+			
+			Transaction tx = session.beginTransaction();
+			try {
+				session.saveOrUpdate(deuda);				
+				tx.commit();
+				return true;
+
+			} catch (HibernateException e) {
+				if (tx != null)
+					tx.rollback();// si hay error se descarta todo
+				e.printStackTrace();
+				session.close();
+				factory.close();
+				System.out.println("Eror al intentar registrar deuda " + System.lineSeparator());
+				return false;
+			}
+		}else {
+			
+		}*/
+		
+		System.out.println(System.lineSeparator());
+		return true;
+
+	}
+	
 
 }

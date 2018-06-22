@@ -1,18 +1,26 @@
 package chat;
 
-public class Deuda {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+
+@Entity
+@IdClass(DeudaPk.class)
+public class Deuda implements Serializable{
 	
-	private String acreedor;
-	private String deudor;
-	private float dinero;
+	@Id
+	protected String acreedor;
+	@Id
+	protected String deudor;
 	
-	
+	private float dinero;	
 	
 	public Deuda() {
-	
+		
 	}
 	
-
 
 	public String getAcreedor() {
 		return acreedor;
