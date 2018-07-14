@@ -1,0 +1,159 @@
+package asistenteTest;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import asistenteVirtual.AsistenteEscucha;
+import asistenteVirtual.Pedido;
+import asistenteVirtual.respuestas.Agradecer;
+import asistenteVirtual.respuestas.Calcular;
+import asistenteVirtual.respuestas.CalcularDeudas;
+import asistenteVirtual.respuestas.ChuckNorrisFacts;
+import asistenteVirtual.respuestas.Default;
+import asistenteVirtual.respuestas.Fecha;
+import asistenteVirtual.respuestas.GagImage;
+import asistenteVirtual.respuestas.Gif;
+import asistenteVirtual.respuestas.LeyesRobotica;
+import asistenteVirtual.respuestas.Saludar;
+import asistenteVirtual.respuestas.Wikipedia;
+import asistenteVirtual.unidadesMedicion.ConvertorDeUnidades;
+import baseDatos.ConsultasDB;
+
+public class DeudaTest {
+	
+	public final static String USUARIO = "delucas";	
+	Pedido pedido = new Pedido();
+	
+	AsistenteEscucha jenkins = new Saludar();
+	AsistenteEscucha agradecer = new Agradecer();
+	AsistenteEscucha calcular = new Calcular();
+	AsistenteEscucha fecha = new Fecha();
+	AsistenteEscucha conversor = new ConvertorDeUnidades();
+	AsistenteEscucha chuckNorris = new ChuckNorrisFacts();
+	AsistenteEscucha leyesRobotica = new LeyesRobotica();
+	AsistenteEscucha gag = new GagImage();
+	AsistenteEscucha deuda = new CalcularDeudas();
+	AsistenteEscucha defaultOperation = new Default();
+	AsistenteEscucha Wikipedia = new Wikipedia();
+	AsistenteEscucha gif = new Gif();
+	
+	@SuppressWarnings("unused")
+	@Before
+	public void setUp() {
+		jenkins.establecerSiguiente(Wikipedia);
+		Wikipedia.establecerSiguiente(agradecer);
+		agradecer.establecerSiguiente(calcular);
+		calcular.establecerSiguiente(fecha);
+		fecha.establecerSiguiente(conversor);
+		conversor.establecerSiguiente(chuckNorris);
+		chuckNorris.establecerSiguiente(gag);		
+		gag.establecerSiguiente(deuda);
+		deuda.establecerSiguiente(gif);
+		gif.establecerSiguiente(leyesRobotica);
+		leyesRobotica.establecerSiguiente(defaultOperation);		
+		ConsultasDB cons = new ConsultasDB("cfgTest.xml");
+		cons.limpiarDeudas();
+	}
+	
+	@Test
+	public void transferenciaDeDeudas() {
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins @juan me debe $50",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas @juan te debe $50",
+				jenkins.escuchar("@jenkins cuanto me debe @juan ?",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins le debo $60 a @maria",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas le debés $60 a @maria. @juan te debe $50",
+				jenkins.escuchar("@jenkins cual es mi estado de deudas?",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas bueno.",
+				jenkins.escuchar("@jenkins simplificar deudas con @juan y @maria",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas le debés $10 a @maria",
+				jenkins.escuchar("@jenkins cual es mi estado de deudas?",USUARIO)
+			);
+		// por detrás, ahora @juan le debe $50 a @maria. Podría probarse,
+		// cambiando el interlocutor del asistente
+	}
+	/*
+	@Test
+	public void deudasGrupalesCasoUno() {
+		
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins con @juan y @maria gastamos $300 y pago @juan",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas le debes $100 a @juan",
+				jenkins.escuchar("@jenkins cual es mi estado de deudas?",USUARIO)
+			);
+		// @maria le debe otros $100 a @juan
+	
+	}
+	
+	@Test
+	public void deudasGrupalesCasoDos() {
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins con @juan y @maria gastamos $300 y pague yo",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas @juan te debe $100. @maria te debe $100",
+				jenkins.escuchar("@jenkins cual es mi estado de deudas?",USUARIO)
+			);
+	}
+	
+	@Test
+	public void deudasSimples() {
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins @juan me debe $500",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas @juan te debe $500",
+				jenkins.escuchar("@jenkins cuanto me debe @juan?",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins @juan me pago $501",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas @juan no te debe nada. Vos le debes $1",
+				jenkins.escuchar("@jenkins cuanto me debe @juan?",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas debes $1 a @juan",
+				jenkins.escuchar("@jenkins cuanto le debo a @juan?",USUARIO)
+			);
+		
+		Assert.assertEquals(
+				"@delucas anotado.",
+				jenkins.escuchar("@jenkins le pague a @juan $10",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas @juan te debe $9",
+				jenkins.escuchar("@jenkins cuanto me debe @juan?",USUARIO)
+			);
+		Assert.assertEquals(
+				"@delucas no le debes nada. @juan te debe $9",
+				jenkins.escuchar("@jenkins cuanto le debo a @juan?",USUARIO)
+			);
+	}*/
+
+}

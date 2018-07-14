@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-mapping>
+	<class name="baseDatos.Evento" table="Evento">
+	<id column="id" name="id" type="int">
+	<generator class="increment"/>
+		</id>
+		<property column="evento" name="evento" type="string" />
+		<property column="usuario" name="usuario" type="string" />
+	</class>
+</hibernate-mapping>

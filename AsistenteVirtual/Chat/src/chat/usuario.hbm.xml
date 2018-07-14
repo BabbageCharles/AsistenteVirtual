@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-<hibernate-mapping>
-	<class name="chat.Usuario" table="user">
-		<id column="user" name="usuario" type="string" />
-		<property column="pass" name="password" type="string" />
-	</class>
-</hibernate-mapping>
